@@ -43,3 +43,7 @@
          transition-all duration-200 shadow-sm hover:shadow-md
          active:transform active:scale-95;
 }
+
+.low-quantity {
+  @apply bg-red-200;
+}
