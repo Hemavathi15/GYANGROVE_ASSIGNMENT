@@ -1,0 +1,94 @@
+@import "tailwindcss";
+.table-container {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100;
+}
+
+.table-header {
+  @apply flex justify-between items-center p-6 border-b border-gray-200 bg-white;
+}
+
+.filter-container {
+  @apply flex gap-4 w-full max-w-xs;
+}
+
+.filter-select {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 cursor-pointer
+         focus:outline-none focus:ring-2 focus:ring-gray-100 focus:border-transparent
+         bg-white shadow-sm;
+}
+
+.table {
+  @apply w-full border-collapse;
+}
+
+.table-head {
+  @apply bg-gray-50;
+}
+
+.table-head-cell {
+  @apply px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider 
+         cursor-pointer hover:text-gray-700 hover:bg-gray-100 transition-colors duration-150;
+}
+
+.table-body {
+  @apply bg-white divide-y divide-gray-200;
+}
+
+.table-row {
+  @apply hover:bg-blue-50 transition-colors duration-150;
+}
+
+.table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+.table-cell-edit {
+  @apply px-6 py-2;
+}
+.table-actions{
+  @apply flex gap-2 ;
+}
+.table-action-icon{
+@apply cursor-pointer
+}
+.low-stock {
+  @apply text-red-600 font-medium bg-red-50 px-2 py-1 rounded-full text-center;
+}
+
+.actions {
+  @apply flex gap-3 justify-end;
+}
+
+.action-button {
+  @apply p-2 rounded-full transition-colors duration-150;
+}
+
+.btn-container{
+  @apply flex justify-center align-middle items-center  ;
+}
+.edit-button {
+  @apply text-blue-600 hover:text-blue-700 hover:bg-blue-50;
+}
+
+.delete-button {
+  @apply text-red-600 hover:text-red-700 hover:bg-red-50;
+}
+
+.save-button {
+  @apply text-green-600 hover:text-green-700 hover:bg-green-50;
+}
+
+.cancel-button {
+  @apply text-gray-600 hover:text-gray-700 hover:bg-gray-50;
+}
+
+.add-button {
+  @apply flex items-center gap-2  cursor-pointer
+         hover:bg-gray-50  transition-colors duration-200 font-medium shadow-sm
+         hover:shadow-md active:transform active:scale-95 
+         px-2 py-2 rounded-full sm:px-4 sm:py-2 md:px-6 md:py-3;
+}
+.add-button span {
+  @apply hidden sm:inline; /* Hide the text by default and show it on medium and larger screens */
+}
+
