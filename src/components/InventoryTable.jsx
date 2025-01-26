@@ -112,7 +112,7 @@ function InventoryTable({
         </thead>
         <tbody className="table-body">
           {filteredItems.map((item) => (
-            <tr key={item.id} className="table-row">
+            <tr key={item.id} className={`table-row ${item.quantity < 10 ? 'low-quantity' : ''}`>
               {editingItem?.id === item.id ? (
                 <>
                   <td className="table-cell-edit">
