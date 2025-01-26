@@ -107,7 +107,7 @@ function InventoryTable({
             <th className="table-head-cell" onClick={() => handleSort("price")}>
               Price
             </th>
-            <th className="table-head-cell">Actions</th>
+            <th ></th>
           </tr>
         </thead>
         <tbody className="table-body">
