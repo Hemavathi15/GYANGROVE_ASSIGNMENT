@@ -170,9 +170,9 @@ function InventoryTable({
                     </button>
                     <button
                       onClick={() => onDelete(item.id)}
-                      className="table-action-icon"
+                      className="table-action-icon" color="blue"
                     >
-                      <Trash2 strokeWidth={1} />
+                      <Trash2 strokeWidth={1} color="red" />
                     </button>
                   </td>
                 </>
