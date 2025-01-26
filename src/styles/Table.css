@@ -46,7 +46,7 @@
   @apply px-6 py-2;
 }
 .table-actions{
-  @apply flex gap-2 ;
+  @apply flex justify-around ;
 }
 .table-action-icon{
 @apply cursor-pointer
