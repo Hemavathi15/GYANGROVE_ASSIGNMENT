@@ -34,8 +34,14 @@ function InventoryTable({
     setEditForm(item);
   };
 
-  const saveEdit = () => {
+  const handleSave = () => {
     onSaveEdit(editForm);
+    setEditForm({});
+    onEdit(null); // Close edit mode after saving
+  };
+
+  const handleCancel = () => {
+    onEdit(null); // Close edit mode
     setEditForm({});
   };
 
@@ -56,14 +62,7 @@ function InventoryTable({
 
   return (
     <div className="table-container">
-      <div
-        className="table-header"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <div className="table-header">
         <div className="filter-container">
           <select
             value={filterCategory}
@@ -80,8 +79,8 @@ function InventoryTable({
         </div>
         <div className="btn-container">
           <button onClick={() => setShowAddForm(true)} className="add-button">
-            <PlusCircle  className="plus-icon" size={20} />
-            <span>Add New Item</span> 
+            <PlusCircle className="plus-icon" size={20} />
+            <span>Add New Item</span>
           </button>
         </div>
       </div>
@@ -92,27 +91,21 @@ function InventoryTable({
             <th className="table-head-cell" onClick={() => handleSort("name")}>
               Name
             </th>
-            <th
-              className="table-head-cell"
-              onClick={() => handleSort("category")}
-            >
+            <th className="table-head-cell" onClick={() => handleSort("category")}>
               Category
             </th>
-            <th
-              className="table-head-cell"
-              onClick={() => handleSort("quantity")}
-            >
+            <th className="table-head-cell" onClick={() => handleSort("quantity")}>
               Quantity
             </th>
             <th className="table-head-cell" onClick={() => handleSort("price")}>
               Price
             </th>
-            <th ></th>
+            <th className="table-head-cell">Actions</th>
           </tr>
         </thead>
         <tbody className="table-body">
           {filteredItems.map((item) => (
-            <tr key={item.id} className={`table-row ${item.quantity < 10 ? 'low-quantity' : ''}`>
+            <tr key={item.id} className={`table-row ${item.quantity < 10 ? 'low-quantity' : ''}`}>
               {editingItem?.id === item.id ? (
                 <>
                   <td className="table-cell-edit">
@@ -127,9 +120,7 @@ function InventoryTable({
                     <input
                       type="text"
                       value={editForm.category}
-                      onChange={(e) =>
-                        handleEditChange("category", e.target.value)
-                      }
+                      onChange={(e) => handleEditChange("category", e.target.value)}
                       className="form-input"
                     />
                   </td>
@@ -137,9 +128,7 @@ function InventoryTable({
                     <input
                       type="number"
                       value={editForm.quantity}
-                      onChange={(e) =>
-                        handleEditChange("quantity", Number(e.target.value))
-                      }
+                      onChange={(e) => handleEditChange("quantity", Number(e.target.value))}
                       className="form-input"
                     />
                   </td>
@@ -148,11 +137,19 @@ function InventoryTable({
                       type="number"
                       step="0.01"
                       value={editForm.price}
-                      onChange={(e) =>
-                        handleEditChange("price", Number(e.target.value))
-                      }
+                      onChange={(e) => handleEditChange("price", Number(e.target.value))}
                       className="form-input"
                     />
+                  </td>
+                  <td className="table-cell table-actions">
+                    <div className="edit-mode-actions">
+                      <button onClick={handleSave} className="action-button save-button" title="Save changes">
+                        <Save size={20} />
+                      </button>
+                      <button onClick={handleCancel} className="action-button cancel-button" title="Cancel editing">
+                        <X size={20} />
+                      </button>
+                    </div>
                   </td>
                 </>
               ) : (
@@ -162,18 +159,14 @@ function InventoryTable({
                   <td className="table-cell">{item.quantity}</td>
                   <td className="table-cell">{item.price}</td>
                   <td className="table-cell table-actions">
-                    <button
-                      onClick={() => startEdit(item)}
-                      className="table-action-icon"
-                    >
-                      <Edit2 strokeWidth={1} />
-                    </button>
-                    <button
-                      onClick={() => onDelete(item.id)}
-                      className="table-action-icon" color="blue"
-                    >
-                      <Trash2 strokeWidth={1} color="red" />
-                    </button>
+                    <div className="view-mode-actions">
+                      <button onClick={() => startEdit(item)} className="action-button edit-button" title="Edit item">
+                        <Edit2 size={20} />
+                      </button>
+                      <button onClick={() => onDelete(item.id)} className="action-button delete-button" title="Delete item">
+                        <Trash2 size={20} />
+                      </button>
+                    </div>
                   </td>
                 </>
               )}
