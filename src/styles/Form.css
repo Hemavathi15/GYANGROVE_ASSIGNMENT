@@ -45,5 +45,5 @@
 }
 
 .low-quantity {
-  @apply bg-red-200;
+  @apply bg-red-200 hover:bg-red-300;
 }
